@@ -1,5 +1,8 @@
-pub trait Asletter {
-    fn as_letter(&self) -> &str;
+pub trait LetterCode {
+    fn as_letter(&self) -> char;
+    fn parse_letter_code(code: char) -> Option<Self>
+    where
+        Self: std::marker::Sized;
 }
 
 pub trait AsTriplet {
@@ -46,33 +49,63 @@ pub enum AminoAcid {
     Z,
 }
 
-impl Asletter for AminoAcid {
-    fn as_letter(&self) -> &'static str {
+impl LetterCode for AminoAcid {
+    fn as_letter(&self) -> char {
         use AminoAcid::*;
         match self {
-            A => "A",
-            B => "B",
-            C => "C",
-            D => "D",
-            E => "E",
-            F => "F",
-            G => "G",
-            H => "H",
-            I => "I",
-            K => "K",
-            L => "L",
-            M => "M",
-            N => "N",
-            P => "P",
-            Q => "Q",
-            R => "R",
-            S => "S",
-            T => "T",
-            V => "V",
-            W => "W",
-            X => "X",
-            Y => "Y",
-            Z => "Z",
+            A => 'A',
+            B => 'B',
+            C => 'C',
+            D => 'D',
+            E => 'E',
+            F => 'F',
+            G => 'G',
+            H => 'H',
+            I => 'I',
+            K => 'K',
+            L => 'L',
+            M => 'M',
+            N => 'N',
+            P => 'P',
+            Q => 'Q',
+            R => 'R',
+            S => 'S',
+            T => 'T',
+            V => 'V',
+            W => 'W',
+            X => 'X',
+            Y => 'Y',
+            Z => 'Z',
+        }
+    }
+
+    fn parse_letter_code(code: char) -> Option<Self> {
+        use AminoAcid::*;
+        match code {
+            'A' => Some(A),
+            'B' => Some(B),
+            'C' => Some(C),
+            'D' => Some(D),
+            'E' => Some(E),
+            'F' => Some(F),
+            'G' => Some(G),
+            'H' => Some(H),
+            'I' => Some(I),
+            'K' => Some(K),
+            'L' => Some(L),
+            'M' => Some(M),
+            'N' => Some(N),
+            'P' => Some(P),
+            'Q' => Some(Q),
+            'R' => Some(R),
+            'S' => Some(S),
+            'T' => Some(T),
+            'V' => Some(V),
+            'W' => Some(W),
+            'X' => Some(X),
+            'Y' => Some(Y),
+            'Z' => Some(Z),
+            _ => None,
         }
     }
 }
