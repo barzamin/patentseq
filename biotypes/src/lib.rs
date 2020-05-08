@@ -10,6 +10,7 @@ pub trait AsFullName {
     fn as_fullname(&self) -> &str;
 }
 
+#[derive(Debug, Clone, Copy)]
 pub enum Nucleobase {
     A,
     C,
@@ -18,6 +19,7 @@ pub enum Nucleobase {
     U,
 }
 
+#[derive(Debug, Clone, Copy)]
 pub enum AminoAcid {
     A,
     B,
