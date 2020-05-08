@@ -172,3 +172,14 @@ impl AsFullName for AminoAcid {
     }
 }
 
+#[derive(Debug)]
+pub enum Locus {
+    Point(usize),
+    Range { from: usize, to: usize },
+}
+
+#[derive(Debug)]
+pub struct Range {
+    pub from: usize,
+    pub to: usize,
+}
